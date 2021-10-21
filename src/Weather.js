@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import "./Weather.css";
 import axios from "axios";
+import FormattedDate from "./FormattedDate.js";
 
 export default function Weather(props){
     const [ready, setReady] = useState(false);
     const [weatherData, setWeatherData] = useState({});
     function handleResponse(response){
-        console.log(response.data);
         setWeatherData({
             temperature: response.data.main.temp,
             humidity: response.data.main.humidity,
@@ -15,7 +15,7 @@ export default function Weather(props){
             feelLike: Math.round(response.data.main.feels_like),
             wind: response.data.wind.speed,
             city: response.data.name,
-            date: "Wednesday 07:00"
+            date: new Date(response.data.dt * 1000)
         });
 
         setReady(true);
@@ -36,7 +36,7 @@ export default function Weather(props){
                 </form>
                 <h1>{weatherData.city}</h1>
                 <ul>
-                    <li>{weatherData.date}</li>
+                    <li><FormattedDate/></li>
                     <li className="text-capitalize">{weatherData.description}</li>
                 </ul>
                 <div className="row">
@@ -62,6 +62,4 @@ export default function Weather(props){
         return "loading...";
     }
 
-    
-    
 }
