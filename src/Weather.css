@@ -36,9 +36,9 @@
     margin: 10px;
 }
 
-.Weather img{
+.Weather canvas{
     height: 64px;
-    margin: -42px 10px 0 0;
+    margin: -20px 10px 0 0;
     display: inline-block;
     width: 64px;
 }

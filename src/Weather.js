@@ -9,15 +9,15 @@ export default function Weather(props){
 
     function handleResponse(response) {
         setWeatherData({
-            ready: true,
+          ready: true,
           coordinates: response.data.coord,
           temperature: response.data.main.temp,
           humidity: response.data.main.humidity,
           date: new Date(response.data.dt * 1000),
           description: response.data.weather[0].description,
-          icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+          icon: response.data.weather[0].icon,
           wind: response.data.wind.speed,
-          city: response.data.name,
+          city: response.data.name, 
         });
     }
 
